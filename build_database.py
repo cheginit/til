@@ -1,4 +1,4 @@
-"""Taken from https://github.com/cheginit/til."""
+"""Taken from https://github.com/cheginit/til ."""
 from datetime import timezone
 import httpx
 import git

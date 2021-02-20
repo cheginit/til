@@ -1,4 +1,4 @@
-"""Taken from https://github.com/simonw/til."""
+"""Taken from https://github.com/simonw/til ."""
 "Run this after build_database.py - it needs tils.db"
 import pathlib
 import sqlite_utils
