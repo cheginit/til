@@ -1,4 +1,4 @@
-name: Build README
+name: Build and Update README
 
 on:
   push:
@@ -14,27 +14,34 @@ jobs:
       # We need full history to introspect created/updated:
       with:
         fetch-depth: 0
+
     - name: Set up Python
       uses: actions/setup-python@v1
       with:
         python-version: 3.8
-    - name: Configure pip caching
-      uses: actions/cache@v1
+
+    - uses: actions/cache@v2
+      name: Configure pip caching
       with:
         path: ~/.cache/pip
         key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
         restore-keys: |
           ${{ runner.os }}-pip-
+
     - name: Install Python dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+
     - name: Build database
-      run: python build_database.py
+      run: |-
+        python build_database.py
+
     - name: Update README
       run: |-
         python update_readme.py --rewrite
         cat README.md
+
     - name: Commit and push if README changed
       run: |-
         git diff
