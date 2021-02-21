@@ -70,8 +70,9 @@ def build_database(repo_path: str) -> None:
             response = None
             while retries < 3:
                 headers = {}
-                if os.environ.get("GITHUB_TOKEN"):
-                    headers = {f'authorization": "Bearer {os.environ["GITHUB_TOKEN"]}'}
+                token = os.environ.get("GITHUB_TOKEN")
+                if token:
+                    headers = {"authorization": f"Bearer {token}"}
                 response = httpx.post(
                     "https://api.github.com/markdown",
                     json={
