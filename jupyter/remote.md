@@ -120,3 +120,5 @@ jlremote
 ```bash
 jllocal
 ```
+
+Credits to [Ben Lindsay](https://benjlindsay.com/posts/running-jupyter-lab-remotely).
