@@ -1,18 +1,20 @@
-"""Taken from https://github.com/cheginit/til ."""
-from datetime import timezone
-import httpx
-import git
+"""Taken from https://github.com/simonw/til ."""
 import os
 import pathlib
-from urllib.parse import urlencode
+import time
+from datetime import timezone
+from typing import Dict
+
+import git
+import httpx
 import sqlite_utils
 from sqlite_utils.db import NotFoundError
-import time
 
 root = pathlib.Path(__file__).parent.resolve()
 
 
-def created_changed_times(repo_path, ref="main"):
+def created_changed_times(repo_path: str, ref: str = "main") -> Dict[str, str]:
+    """Determine creation time in UTC time zone."""
     created_changed_times = {}
     repo = git.Repo(repo_path, odbt=git.GitDB)
     commits = reversed(list(repo.iter_commits(ref)))
@@ -34,7 +36,8 @@ def created_changed_times(repo_path, ref="main"):
     return created_changed_times
 
 
-def build_database(repo_path):
+def build_database(repo_path: str) -> None:
+    """Build a SQLite database from TILs."""
     all_times = created_changed_times(repo_path)
     db = sqlite_utils.Database(repo_path / "tils.db")
     table = db.table("til", pk="path")
@@ -68,9 +71,7 @@ def build_database(repo_path):
             while retries < 3:
                 headers = {}
                 if os.environ.get("GITHUB_TOKEN"):
-                    headers = {
-                        "authorization": "Bearer {}".format(os.environ["GITHUB_TOKEN"])
-                    }
+                    headers = {f'authorization": "Bearer {os.environ["GITHUB_TOKEN"]}'}
                 response = httpx.post(
                     "https://api.github.com/markdown",
                     json={
@@ -82,23 +83,20 @@ def build_database(repo_path):
                 )
                 if response.status_code == 200:
                     record["html"] = response.text
-                    print("Rendered HTML for {}".format(path))
+                    print(f"Rendered HTML for {path}")
                     break
                 else:
                     print("  sleeping 60s")
                     time.sleep(60)
                     retries += 1
             else:
-                assert False, "Could not render {} - last response was {}".format(
-                    path, response.headers
-                )
+                msg = f"Could not render {path} - last response was {response.headers}"
+                raise AssertionError(msg)
         record.update(all_times[path])
         with db.conn:
             table.upsert(record, alter=True)
 
-    table.enable_fts(
-        ["title", "body"], tokenize="porter", create_triggers=True, replace=True
-    )
+    table.enable_fts(["title", "body"], tokenize="porter", create_triggers=True, replace=True)
 
 
 if __name__ == "__main__":

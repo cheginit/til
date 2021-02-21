@@ -1,9 +1,10 @@
 """Taken from https://github.com/simonw/til ."""
 "Run this after build_database.py - it needs tils.db"
 import pathlib
-import sqlite_utils
-import sys
 import re
+import sys
+
+import sqlite_utils
 
 root = pathlib.Path(__file__).parent.resolve()
 
@@ -19,13 +20,9 @@ if __name__ == "__main__":
         by_topic.setdefault(row["topic"], []).append(row)
     index = ["<!-- index starts -->"]
     for topic, rows in by_topic.items():
-        index.append("## {}\n".format(topic))
+        index.append(f"## {topic}\n")
         for row in rows:
-            index.append(
-                "* [{title}]({url}) - {date}".format(
-                    date=row["created"].split("T")[0], **row
-                )
-            )
+            index.append(f'* [{row["title"]}]({row["url"]}) - {row["created"].split("T")[0]}')
         index.append("")
     if index[-1] == "":
         index.pop()
