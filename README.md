@@ -1,5 +1,5 @@
 # Today I Learned
-[![Counter badge](https://img.shields.io/badge/count-1-green.svg)](https://shields.io/)
+[![Counter badge](https://img.shields.io/badge/count-2-green.svg)](https://shields.io/)
 
 My Today I Learned snippets. Inspired by [simonw/til](https://github.com/simonw/til).
 
@@ -7,4 +7,8 @@ My Today I Learned snippets. Inspired by [simonw/til](https://github.com/simonw/
 ## python
 
 * [Install and setup `miniforge`](https://github.com/cheginit/til/blob/main/python/miniforge.md) - 2021-02-20
+
+## jupyter
+
+* [Connect to A Remote JupyterLab Server](https://github.com/cheginit/til/blob/main/jupyter/remote.md) - 2021-02-20
 <!-- index ends -->
