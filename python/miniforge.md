@@ -22,7 +22,7 @@ Next, add the following lines to your shell `rc` file (e.g., `~/.zshrc`):
 APP_DIR="~/.local/apps"
 
 mmf () {
-    __conda_setup="$('${APP_DIR}/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)" 
+    __conda_setup="$('${APP_DIR}/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
     if [ $? -eq 0 ]
     then
         eval "$__conda_setup"
@@ -31,7 +31,7 @@ mmf () {
         then
             . "${APP_DIR}/mambaforge/etc/profile.d/conda.sh"
         else
-            export PATH="${APP_DIR}/mambaforge/bin:$PATH" 
+            export PATH="${APP_DIR}/mambaforge/bin:$PATH"
         fi
     fi
     unset __conda_setup

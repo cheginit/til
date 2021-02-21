@@ -11,7 +11,7 @@ the remote Jupyter server.
 EMAIL="your_email_address" && \
 ssh-keygen -t rsa -b 4096 -C "$EMAIL" -q -N "" -f ${HOME}/.ssh/id_rsa && \
 eval $(ssh-agent -s) && \
-ssh-add ~/.ssh/id_rsa 
+ssh-add ~/.ssh/id_rsa
 ```
 
 2. Add this key to the cluster (replace `your_cluster_id` and `cluster_url` with yours.
@@ -64,7 +64,7 @@ jlremote
 8. Make note of the token and leave this terminal open. You should see something like this:
 
 ```bash
-[USER_ID@compute-0-11 ~]$ jlremote 
+[USER_ID@compute-0-11 ~]$ jlremote
 [I 21:36:08.564 LabApp] JupyterLab extension loaded from jupyterlab
 [I 21:36:08.564 LabApp] JupyterLab application directory is lab
 [I 21:36:08.567 LabApp] Serving notebooks from local directory: /home/USER_ID
@@ -83,14 +83,14 @@ If the output is `bash` then you can leave it as is unless you're using MacOSX w
 cat << 'EOF' >> ~/.bashrc
 
 jllocal () {
-    PORT=${1:-9753} 
+    PORT=${1:-9753}
     USER_ID="your_cluster_id"
     HOST_URL="cluster_url"
-    JUPY_NODE=$(ssh ${USER_ID}@${HOST_URL} 'tail -1 ~/.jupyternode.txt') 
-    JUPY_NODE=${JUPY_NODE//[$'\t\r\n ']} 
-    CMD="ssh -CNL ${PORT}:${JUPY_NODE}:${PORT} ${USER_ID}@${HOST_URL}" 
-    command -v open > /dev/null 2>&1 && OPEN=open 
-    command -v xdg-open > /dev/null 2>&1 && OPEN=xdg-open 
+    JUPY_NODE=$(ssh ${USER_ID}@${HOST_URL} 'tail -1 ~/.jupyternode.txt')
+    JUPY_NODE=${JUPY_NODE//[$'\t\r\n ']}
+    CMD="ssh -CNL ${PORT}:${JUPY_NODE}:${PORT} ${USER_ID}@${HOST_URL}"
+    command -v open > /dev/null 2>&1 && OPEN=open
+    command -v xdg-open > /dev/null 2>&1 && OPEN=xdg-open
     eval "$CMD" & \
     sleep 2 && eval "$OPEN http://localhost:$PORT"
 }
