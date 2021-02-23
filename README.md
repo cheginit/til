@@ -1,5 +1,5 @@
 # Today I Learned
-[![Counter badge](https://img.shields.io/badge/count-3-green.svg)](https://shields.io/)
+[![Counter badge](https://img.shields.io/badge/count-4-green.svg)](https://shields.io/)
 
 My Today I Learned snippets. Inspired by [simonw/til](https://github.com/simonw/til).
 
@@ -7,6 +7,7 @@ My Today I Learned snippets. Inspired by [simonw/til](https://github.com/simonw/
 ## python
 
 * [Install and setup `miniforge`](https://github.com/cheginit/til/blob/main/python/miniforge.md) - 2021-02-20
+* [Check if `None`](https://github.com/cheginit/til/blob/main/python/none.md) - 2021-02-22
 
 ## jupyter
 
