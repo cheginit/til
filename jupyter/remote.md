@@ -1,4 +1,4 @@
-# Connect to A Remote JupyterLab Server
+# Connect to a remote JupyterLab server
 
 Here are the steps for connecting to a remote Jupyter server on a cluster. Note that you need
 to work with two terminals; One for running the remote server, and another for connecting to
