@@ -1,6 +1,6 @@
 # Today I Learned
 
-[![Counter badge](https://img.shields.io/badge/count-5-green.svg)](https://shields.io/)
+[![Counter badge](https://img.shields.io/badge/count-7-green.svg)](https://shields.io/)
 
 My Today I Learned snippets. Inspired by [simonw/til](https://github.com/simonw/til).
 
@@ -10,6 +10,7 @@ My Today I Learned snippets. Inspired by [simonw/til](https://github.com/simonw/
 * [Install and setup `miniforge`](https://github.com/cheginit/til/blob/main/python/miniforge.md) - 2021-02-20
 * [Check if `None`](https://github.com/cheginit/til/blob/main/python/none.md) - 2021-02-22
 * [Extract links from a web page](https://github.com/cheginit/til/blob/main/python/html_file.md) - 2021-02-25
+* [Parsing XMLs in Python safely](https://github.com/cheginit/til/blob/main/python/xlm_parse.md) - 2021-02-28
 
 ## jupyter
 
