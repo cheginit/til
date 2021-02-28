@@ -3,7 +3,7 @@
 Suppose we want to find values of a specific field from a `xml` webpage. For example,
 let's extract units of some of the attributes that are available in
 [this](https://www.sciencebase.gov/catalog/item/5669a79ee4b08895842a1d47)
-on ScienceBase. Here's how we can achieve this using [defusedxml](https://github.com/tiran/defusedxml)
+item on ScienceBase. Here's how we can achieve this using [defusedxml](https://github.com/tiran/defusedxml)
 and [PyGeoOGC](https://github.com/cheginit/pygeoogc) safely:
 
 ```python
