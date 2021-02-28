@@ -20,7 +20,7 @@ if __name__ == "__main__":
         by_topic.setdefault(row["topic"], []).append(row)
     index = ["<!-- index starts -->"]
     for topic, rows in by_topic.items():
-        index.append(f"## {topic}\n")
+        index.append(f"## {topic.replace('_', ' ').title()}\n")
         for row in rows:
             index.append(f'* [{row["title"]}]({row["url"]}) - {row["created"].split("T")[0]}')
         index.append("")
