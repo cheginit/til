@@ -15,7 +15,11 @@ My Today I Learned snippets. Inspired by [simonw/til](https://github.com/simonw/
 
 * [Connect to a remote JupyterLab server](https://github.com/cheginit/til/blob/main/jupyter/remote.md) - 2021-02-20
 
-## web-service
+## web_service
 
-* [Setup `netrc` for using EarthData](https://github.com/cheginit/til/blob/main/web-service/netrc.md) - 2021-02-21
+* [Setup `netrc` for using EarthData](https://github.com/cheginit/til/blob/main/web_service/netrc.md) - 2021-02-26
+
+## github_actions
+
+* [Speed up Github Actions with `mamba`](https://github.com/cheginit/til/blob/main/github_actions/mamba.md) - 2021-02-26
 <!-- index ends -->
