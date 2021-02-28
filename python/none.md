@@ -13,4 +13,3 @@ if x is not None:
 
 The first if-block won't print anything but the second will work as expected. We get
 similar result with `x = 0`.
-

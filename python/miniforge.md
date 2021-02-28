@@ -1,6 +1,7 @@
 # Install and setup `miniforge`
 
-[`miniforge`](https://github.com/conda-forge/miniforge) is a minimal installer for Conda specific to conda-forge. It is comparable to Miniconda, but with:
+[`miniforge`](https://github.com/conda-forge/miniforge) is a minimal installer for Conda specific
+to conda-forge. It is comparable to Miniconda, but with:
 
 * `conda-forge` set as the default channel
 * An emphasis on supporting various CPU architectures
@@ -8,6 +9,7 @@
 * Optional support for Mamba in place of Conda
 
 First, install `miniforge`:
+
 ```bash
 wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
 chmod +x Mambaforge-Linux-x86_64.sh
