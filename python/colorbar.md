@@ -1,7 +1,7 @@
 # `colorbar` in `matplotlib` done right
 
-Let's see how we can add a colorbar to a plot that respects the plot size. First, let's get
-Environmental Performance Index from EPI's website and then plot it using geopanadas:
+Let's see how we can add a colorbar to a plot that respects the plot scale. First, let's get
+Environmental Performance Index from EPI's website and then plot it:
 
 ```python
 import pandas as pd
