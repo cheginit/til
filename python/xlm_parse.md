@@ -9,7 +9,7 @@ and [PyGeoOGC](https://github.com/cheginit/pygeoogc) safely:
 ```python
 
 import pygeoogc as ogc
-import defusedxml.cElementTree as ET
+import defusedxml.ElementTree as ET
 import pandas as pd
 
 # A list of urls and payloads of the tagret XMLs
