@@ -11,11 +11,11 @@ df = pd.DataFrame(
 )
 
 ax = df.plot.bar(legend=False)
-ypos = ax.get_ylim()[1] * 0.025
+yshift = ax.get_ylim()[1] * 0.025
 for p in ax.patches:
     ax.annotate(
         p.get_height(),
-        (p.get_x() + p.get_width() / 2, p.get_height() + ypos),
+        (p.get_x() + p.get_width() / 2, p.get_height() + yshift),
         ha="center",
         va="center",
     )
