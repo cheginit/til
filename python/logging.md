@@ -19,4 +19,5 @@ logger.setLevel(logging.INFO)
 handler = logging.StreamHandler(sys.stdout)
 handler.setFormatter(logging.Formatter(""))
 logger.handlers = [handler]
+logger.propagate = False
 ```
