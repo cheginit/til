@@ -1,6 +1,6 @@
 # Today I Learned
 
-[![Counter badge](https://img.shields.io/badge/count-9-green.svg)](https://shields.io/)
+[![Counter badge](https://img.shields.io/badge/count-10-green.svg)](https://shields.io/)
 
 My Today I Learned snippets. Inspired by [simonw/til](https://github.com/simonw/til).
 
@@ -13,6 +13,7 @@ My Today I Learned snippets. Inspired by [simonw/til](https://github.com/simonw/
 * [Parsing XMLs in Python safely](https://github.com/cheginit/til/blob/main/python/xlm_parse.md) - 2021-02-28
 * [`colorbar` in `matplotlib` done right](https://github.com/cheginit/til/blob/main/python/colorbar.md) - 2021-03-04
 * [Annotate bar plots](https://github.com/cheginit/til/blob/main/python/barplot.md) - 2021-03-06
+* [Customizing logging configuration](https://github.com/cheginit/til/blob/main/python/logging.md) - 2021-03-11
 
 ## Jupyter
 
