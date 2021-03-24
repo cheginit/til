@@ -27,9 +27,7 @@ def setup_urs_login(urs: str) -> None:
     try:
         netrc(netrc_file).authenticators(urs)[1]
     except (FileNotFoundError, TypeError) as exc:
-        user_data: Dict[str, str] = {}
-        for p, msg in prompts.items():
-            user_data[p] = getpass(prompt=msg)
+        user_data = {p: getpass(prompt=msg) for p, msg in prompts.items()}
 
         fmode = "w" if exc.__class__ == FileNotFoundError else "a"
         with open(netrc_file, fmode) as f:
