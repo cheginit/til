@@ -1,6 +1,6 @@
 # Today I Learned
 
-[![Counter badge](https://img.shields.io/badge/count-12-green.svg)](https://shields.io/)
+[![Counter badge](https://img.shields.io/badge/count-13-green.svg)](https://shields.io/)
 
 My Today I Learned snippets. Inspired by [simonw/til](https://github.com/simonw/til).
 
@@ -20,6 +20,7 @@ My Today I Learned snippets. Inspired by [simonw/til](https://github.com/simonw/
 ## Jupyter
 
 * [Connect to a remote JupyterLab server](https://github.com/cheginit/til/blob/main/jupyter/remote.md) - 2021-02-20
+* [Run Jupyter Lab as an Application](https://github.com/cheginit/til/blob/main/jupyter/app.md) - 2021-04-02
 
 ## Web Service
 
