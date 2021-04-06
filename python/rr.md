@@ -2,7 +2,7 @@
 
 I stumbled upon this interesting implementation of
 [round-roubin scheduler](https://en.wikipedia.org/wiki/Round-robin_scheduling)
-in Python's documentation:
+in [Python's documentation](https://docs.python.org/3/library/collections.html#collections.deque):
 
 > A round-robin scheduler can be implemented with input iterators stored in a deque.
 > Values are yielded from the active iterator in position zero. If that iterator is
