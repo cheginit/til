@@ -1,6 +1,6 @@
 # Today I Learned
 
-[![Counter badge](https://img.shields.io/badge/count-13-green.svg)](https://shields.io/)
+[![Counter badge](https://img.shields.io/badge/count-14-green.svg)](https://shields.io/)
 
 My Today I Learned snippets. Inspired by [simonw/til](https://github.com/simonw/til).
 
@@ -16,6 +16,7 @@ My Today I Learned snippets. Inspired by [simonw/til](https://github.com/simonw/
 * [Customizing logging configuration](https://github.com/cheginit/til/blob/main/python/logging.md) - 2021-03-11
 * [Timing a Function](https://github.com/cheginit/til/blob/main/python/timer.md) - 2021-03-12
 * [Recursive AutoAPI for Sphinx](https://github.com/cheginit/til/blob/main/python/autoapi.md) - 2021-03-16
+* [A round-robin scheduler implementation](https://github.com/cheginit/til/blob/main/python/rr.md) - 2021-04-06
 
 ## Jupyter
 
