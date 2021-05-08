@@ -22,6 +22,6 @@ After you're done with the process, you should close the access as follows:
 root.destroy()
 ```
 
-This only works for Linux-based systems, if you MacOS or Windows you have to use
+This only works for Linux-based systems, if you use MacOS or Windows you have to use
 another approach. You can find more info
 [here](https://github.com/mattvonrocketstein/smash/blob/master/smashlib/ipy3x/lib/clipboard.py).
