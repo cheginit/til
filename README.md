@@ -1,6 +1,6 @@
 # Today I Learned
 
-[![Counter badge](https://img.shields.io/badge/count-17-green.svg)](https://shields.io/)
+[![Counter badge](https://img.shields.io/badge/count-18-green.svg)](https://shields.io/)
 
 My Today I Learned snippets. Inspired by [simonw/til](https://github.com/simonw/til).
 
@@ -20,6 +20,7 @@ My Today I Learned snippets. Inspired by [simonw/til](https://github.com/simonw/
 * [Adding breakpoints for debugging](https://github.com/cheginit/til/blob/main/python/debugging.md) - 2021-04-27
 * [Interacting with system's clipboard](https://github.com/cheginit/til/blob/main/python/clipboard.md) - 2021-05-06
 * [Function progress with Rich](https://github.com/cheginit/til/blob/main/python/decorator.md) - 2021-06-08
+* [Polygon legend in GeoPandas Plot](https://github.com/cheginit/til/blob/main/python/geopandas_polt.md) - 2021-06-23
 
 ## Jupyter
 
