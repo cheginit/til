@@ -47,7 +47,8 @@ def build_database(repo_path: str) -> None:
         body = fp.read().strip()
         path = str(filepath.relative_to(root))
         slug = filepath.stem
-        url = f"https://github.com/cheginit/til/blob/main/{path}"
+        parent_dir = filepath.parent.stem
+        url = f"https://cheginit.github.io/til/{parent_dir}/{slug}.html"
         # Do we need to render the markdown?
         path_slug = path.replace("/", "_")
         try:
