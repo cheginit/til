@@ -1,6 +1,6 @@
 # Today I Learned
 
-[![Counter badge](https://img.shields.io/badge/count-19-green.svg)](https://shields.io/)
+[![Counter badge](https://img.shields.io/badge/count-20-green.svg)](https://shields.io/)
 
 My Today I Learned snippets. Inspired by [simonw/til](https://github.com/simonw/til).
 
@@ -22,6 +22,7 @@ My Today I Learned snippets. Inspired by [simonw/til](https://github.com/simonw/
 * [Function progress with Rich](https://cheginit.github.io/til/python/decorator.html) - 2021-06-08
 * [Polygon legend in GeoPandas Plot](https://cheginit.github.io/til/python/geopandas_polt.html) - 2021-06-23
 * [General function for running functions asynchronously](https://cheginit.github.io/til/python/run_async_func.html) - 2021-07-06
+* [List of authors from DOI](https://cheginit.github.io/til/python/get_authors.html) - 2021-07-12
 
 ## Jupyter
 
