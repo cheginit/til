@@ -39,7 +39,7 @@ from time import sleep
 console = Console()
 
 @live_display(console, 1, 7, "Doing a fancy job!")
-sleeping_beauty(t):
+def sleeping_beauty(t):
     sleep(t)
     return t
 
