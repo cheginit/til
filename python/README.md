@@ -1,4 +1,4 @@
-## Python
+# Python
 
 * [Install and setup `miniforge`](https://cheginit.github.io/til/python/miniforge.html) - 2021-02-20
 * [Check if `None`](https://cheginit.github.io/til/python/none.html) - 2021-02-22
