@@ -23,22 +23,14 @@ jobs:
         path: til-db
         token: ${{ secrets.DB_PUSH }}
 
-    - name: Set up Python
-      uses: actions/setup-python@v1
+    - name: Create a Python environment
+      uses: actions/setup-python@v2
       with:
-        python-version: 3.8
-
-    - uses: actions/cache@v2
-      name: Configure pip caching
-      with:
-        path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-
+        python-version: '3.9'
+        cache: 'pip'
 
     - name: Install Python dependencies
       run: |
-        python -m pip install --upgrade pip
         pip install -r main/requirements.txt
 
     - name: Build database
@@ -55,11 +47,15 @@ jobs:
     - name: Commit and push if README changed
       run: |-
         cd main
-        git diff
-        git config --global user.email "readme-bot@example.com"
-        git config --global user.name "README-bot"
-        git diff --quiet || (git add README.md */README && git commit -m "Updated READMEs")
-        git push
+        git status -sb README.md */README
+        N_CHANGES=$(git status --porcelain=v1 README.md */README 2>/dev/null | wc -l)
+        if [[ $N_CHANGES -gt 0 ]]; then
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "github-actions"
+          git add README.md */README
+          git commit -m "GHW: Updated READMEs [skip ci]"
+          git push
+        fi
 
     - name: Save tils.db to cheginit/til-db
       run: |-
