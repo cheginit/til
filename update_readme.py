@@ -1,12 +1,12 @@
 """Taken from https://github.com/simonw/til ."""
 "Run this after build_database.py - it needs tils.db"
-import pathlib
+from pathlib import Path
 import re
 import sys
 
 import sqlite_utils
 
-root = pathlib.Path(__file__).parent.resolve()
+root = Path(__file__).parent.resolve()
 
 index_re = re.compile(r"<!\-\- index starts \-\->.*<!\-\- index ends \-\->", re.DOTALL)
 count_re = re.compile(r"count-.*-green", re.DOTALL)
@@ -36,3 +36,12 @@ if __name__ == "__main__":
         readme.open("w").write(rewritten)
     else:
         print("\n".join(index))
+
+    # Add separate readmes for each subsection
+    with open("README.md") as f:
+        tils = [s.split("\n") for s in f.read().split("##")[1:]]
+        tils = {til[0].strip(): [t for t in til[2:] if len(t) > 0 and "index ends" not in t] for til in tils}
+    for f, t in tils.items():
+        with open(Path(f.lower().replace(" ", "_"), "README"), "w") as fp:
+            til = '\n'.join(t)
+            fp.write(f"## {f}\n\n{til}")
