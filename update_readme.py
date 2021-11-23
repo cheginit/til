@@ -47,6 +47,6 @@ if __name__ == "__main__":
             for til in tils
         }
     for f, t in tils.items():
-        with open(Path(f.lower().replace(" ", "_"), "README"), "w") as fp:
+        with open(Path(f.lower().replace(" ", "_"), "README.md"), "w") as fp:
             til = "\n".join(t)
             fp.write(f"## {f}\n\n{til}")
