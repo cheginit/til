@@ -6,7 +6,7 @@ from datetime import timezone
 from typing import Dict
 
 import git
-import httpx
+import requests_cache
 import sqlite_utils
 from sqlite_utils.db import NotFoundError
 
@@ -41,7 +41,9 @@ def build_database(repo_path: str) -> None:
     all_times = created_changed_times(repo_path)
     db = sqlite_utils.Database(repo_path / "tils.db")
     table = db.table("til", pk="path")
-    for filepath in root.glob("*/*.md"):
+    tils = [f for f in root.glob("*/*.md") if f.stem != "README"]
+    session = requests_cache.CachedSession(backend="sqlite")
+    for filepath in tils:
         fp = filepath.open()
         title = fp.readline().lstrip("#").strip()
         body = fp.read().strip()
@@ -74,10 +76,10 @@ def build_database(repo_path: str) -> None:
                 token = os.environ.get("GITHUB_TOKEN")
                 if token:
                     headers = {"authorization": f"Bearer {token}"}
-                response = httpx.post(
+
+                response = session.post(
                     "https://api.github.com/markdown",
                     json={
-                        # mode=gfm would expand #13 issue links and suchlike
                         "mode": "markdown",
                         "text": body,
                     },
