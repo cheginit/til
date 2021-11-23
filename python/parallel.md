@@ -1,6 +1,6 @@
 # Parallel with Dask and Joblib
 
-We can run a function parallel using `dask`, `joblib`, `cytoolz` as follows:
+We can run a function parallel using `dask`, `joblib`, and `cytoolz` as follows:
 
 ```python
 from dask.distributed import Client, LocalCluster
@@ -49,5 +49,5 @@ with Client(), joblib.parallel_backend("dask"):
 ```
 
 The difference is that the latter approach spwans a new schedueler every time
-the code reaches the line while the former creates only one schedueler. This
-is useful for cases where you want to use this approach several times in a code.
+the code reaches this line of code whereas the former creates only one schedueler. The
+former approach is useful for cases where you have several such parallel runs in your code.
