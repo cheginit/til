@@ -44,15 +44,15 @@ jobs:
         python update_readme.py --rewrite
         cat README.md
 
-    - name: Commit and push if README changed
+    - name: Commit and push if READMEs changed
       run: |-
         cd main
-        git status -sb README.md */README
-        N_CHANGES=$(git status --porcelain=v1 README.md */README 2>/dev/null | wc -l)
+        git status -sb README.md */README.md
+        N_CHANGES=$(git status --porcelain=v1 README.md */README.md 2>/dev/null | wc -l)
         if [[ $N_CHANGES -gt 0 ]]; then
           git config --global user.email "github-actions@github.com"
           git config --global user.name "github-actions"
-          git add README.md */README
+          git add README.md */README.md
           git commit -m "GHW: Updated READMEs [skip ci]"
           git push
         fi
