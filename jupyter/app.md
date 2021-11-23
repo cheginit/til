@@ -1,6 +1,6 @@
 # Run Jupyter Lab as an Application
 
-You can run Jupyter Lab as an applicaton using application mode of Chrome as follows:
+You can run Jupyter Lab as an application using application mode of Chrome as follows:
 
 ```bash
 jupyter lab --no-browser /dev/null 2>&1 & \

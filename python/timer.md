@@ -2,7 +2,7 @@
 
 As an alternative to `timeit`, we can use
 [`profilehooks`](https://github.com/mgedmin/profilehooks) library to check runtime
-of a function. For example, let's compare performace of `cytoolz` for flattening a nested list
+of a function. For example, let's compare performance of `cytoolz` for flattening a nested list
 with a simple list comprehension, for a single run.
 
 ```python

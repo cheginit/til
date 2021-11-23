@@ -58,7 +58,7 @@ alias mbf="mamba env create -f"
 ```
 
 Upon reloading your shell, you can use `mbu` for update all the installed packages in the
-current environment. Moreover, `mbi` install the specified package in the current environemnt,
+current environment. Moreover, `mbi` install the specified package in the current environment,
 and `mbf` creates a new environment from the specified `.yml` file.
 
 Next, we can activate any existing environment using `cac`, for example, if we can activate
