@@ -1,6 +1,6 @@
 repos:
-  - repo: git://github.com/pre-commit/pre-commit-hooks
-    rev: v4.0.1
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.3.0
     hooks:
     - id: trailing-whitespace
     - id: end-of-file-fixer
@@ -10,7 +10,7 @@ repos:
       args: ['--fix=lf']
 
   - repo: https://github.com/DavidAnson/markdownlint-cli2
-    rev: v0.3.2
+    rev: v0.5.0
     hooks:
     - id: markdownlint-cli2
       args: ["*/*.md"]
@@ -28,21 +28,21 @@ repos:
       name: Sort imports with isort
 
   - repo: https://github.com/psf/black
-    rev: 21.11b1
+    rev: 22.6.0
     hooks:
     - id: black
       name: Autoformat with black
       args: [-t, py38, -l, "100"]
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v2.29.1
+    rev: v2.37.3
     hooks:
     - id: pyupgrade
       name: Upgrade synax to python 3.7+ with pyupgrade
       args: [--py37-plus]
 
   - repo: https://github.com/PyCQA/flake8
-    rev: 4.0.1
+    rev: 5.0.2
     hooks:
     - id: flake8
       name: Linting with flake8
