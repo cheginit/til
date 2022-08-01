@@ -71,7 +71,7 @@ def halley_solver(x0: float, args: Tuple[float, float]) -> float:
 The root of this function for $A=0.91$ and $r=2$ is approximately 1.45. We intentionally
 give a far off initial guess for a better comparison.
 
-```python
+```console
 %timeit halley_solver(10000, (0.91, 2))
 
 1.44 µs ± 1.45 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
@@ -89,12 +89,15 @@ def der1(theta: float, _) -> float:
 def der2(theta: float, _) -> float:
     """The second derivative of the main function."""
     return np.sin(theta)
+```
 
-%timeit optimize.newton(func_main, 10000, fprime=der1, args=((0.91, 2),), fprime2=der2)
+```console
+%timeit optimize.newton(func_main, 10000, fprime=der1, fprime2=der2, args=((0.91, 2),))
 
 1.12 ms ± 43.4 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
 ```
 
-The Numba version has almost x1000 performance improvement. Although, writing a general
-version with Numba is not very straight forward, but the code can be easily adjusted
-for any equation.
+The Numba version has almost x1000 performance improvement. I should note that the reason
+that I didn't pass the functions as an argument to `halley_solver` function is that you
+cannot specify the Numba signatures explicitly. Technically you can choose to not pass
+the signatures to `ngjit`, but for getting the maximum performance I decided to pass them.
