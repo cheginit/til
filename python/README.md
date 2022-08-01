@@ -20,3 +20,4 @@
 * [Extracting Abstracts For an AGU Session](https://cheginit.github.io/til/python/agu_abstract.html) - 2021-08-06
 * [Networkx graph from NHDPlus](https://cheginit.github.io/til/python/nhdplus.html) - 2021-11-18
 * [Parallel with Dask and Joblib](https://cheginit.github.io/til/python/parallel.html) - 2021-11-23
+* [Implementing Newton-Raphson algorithm with Numba](https://cheginit.github.io/til/python/newton.html) - 2022-08-01
