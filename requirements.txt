@@ -1,3 +1,3 @@
 GitPython
-requests_cache
+requests-cache
 sqlite-utils>=3.2
