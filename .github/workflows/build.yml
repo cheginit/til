@@ -26,8 +26,8 @@ jobs:
     - name: Create a Python environment
       uses: actions/setup-python@v5
       with:
-        python-version: '3.9'
-        cache: 'pip'
+        python-version: 3.11
+        cache: pip
 
     - name: Install Python dependencies
       run: |
@@ -49,13 +49,9 @@ jobs:
         cd main
         git config --global user.email "github-actions@github.com"
         git config --global user.name "github-actions"
+        git diff --quiet || (git add README.md && git commit -m "GHW: Updated READMEs [skip ci]")
         git status -sb README.md */README.md
-        N_CHANGES=$(git status --porcelain=v1 README.md */README.md 2>/dev/null | wc -l)
-        if [[ $N_CHANGES -gt 0 ]]; then
-          git add README.md */README.md
-          git commit -m "GHW: Updated READMEs [skip ci]"
-          git push
-        fi
+        git push
 
     - name: Save tils.db to cheginit/til-db
       run: |-
