@@ -11,7 +11,6 @@ jobs:
     steps:
     - name: Check out repo
       uses: actions/checkout@v4
-      # We need full history to introspect created/updated:
       with:
         fetch-depth: 0
         path: main
@@ -49,8 +48,7 @@ jobs:
         cd main
         git config --global user.email "github-actions@github.com"
         git config --global user.name "github-actions"
-        git diff --quiet || (git add README.md && git commit -m "GHW: Updated READMEs [skip ci]")
-        git status -sb README.md */README.md
+        git diff --quiet HEAD $REF -- $DIR || (git add README.md && git commit -m "GHW: Updated READMEs [skip ci]")
         git push
 
     - name: Save tils.db to cheginit/til-db
