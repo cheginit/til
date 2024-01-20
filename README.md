@@ -1,6 +1,6 @@
 # Today I Learned
 
-[![Counter badge](https://img.shields.io/badge/count-26-green.svg)](https://shields.io/)
+[![Counter badge](https://img.shields.io/badge/count-27-green.svg)](https://shields.io/)
 
 My Today I Learned snippets. Inspired by [simonw/til](https://github.com/simonw/til).
 
@@ -28,6 +28,7 @@ My Today I Learned snippets. Inspired by [simonw/til](https://github.com/simonw/
 * [Networkx graph from NHDPlus](https://cheginit.github.io/til/python/nhdplus.html) - 2021-11-18
 * [Parallel with Dask and Joblib](https://cheginit.github.io/til/python/parallel.html) - 2021-11-23
 * [Implementing Newton-Raphson algorithm with Numba](https://cheginit.github.io/til/python/newton.html) - 2022-08-01
+* [Overture Buildings using DuckDB](https://cheginit.github.io/til/python/buildings.html) - 2024-01-20
 
 ## Jupyter
 
