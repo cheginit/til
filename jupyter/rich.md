@@ -1,6 +1,7 @@
 # Rich extension
 
-The `rich` library has an IPython extension that prettifies
+The [Rich](https://rich.readthedocs.io/en/stable/introduction.html)
+library has an IPython extension that prettifies
 cell outputs in Jupyter Notebooks. You can add this line
 to your IPython profile to enable this extension by default
 for all notebooks:
@@ -13,7 +14,5 @@ except ImportError:
     pass
 ```
 
-
 The default location for the profile is
 `~/.ipython/profile_default/ipython_config.py`
-

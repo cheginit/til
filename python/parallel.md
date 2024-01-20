@@ -48,6 +48,6 @@ with Client(), joblib.parallel_backend("dask"):
     )
 ```
 
-The difference is that the latter approach spwans a new schedueler every time
+The difference is that the latter approach spawns a new schedueler every time
 the code reaches this line of code whereas the former creates only one schedueler. The
 former approach is useful for cases where you have several such parallel runs in your code.
