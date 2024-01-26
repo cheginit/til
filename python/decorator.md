@@ -9,6 +9,7 @@ import functools
 from timeit import default_timer as timer
 import datetime
 
+
 def live_display(console, current, total, msg):
     def decorator_live_display(func):
         @functools.wraps(func)
@@ -38,10 +39,12 @@ from time import sleep
 
 console = Console()
 
+
 @live_display(console, 1, 7, "Doing a fancy job!")
 def sleeping_beauty(t):
     sleep(t)
     return t
+
 
 _ = sleeping_beauty(5)
 ```

@@ -3,7 +3,7 @@
 Using `if x: statement` to check if `x` is `None` might have unintended consequences.
 
 ```python
-x = ''
+x = ""
 if x:
     print("Without is")
 

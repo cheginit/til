@@ -10,16 +10,17 @@ import cytoolz as tlz
 cluster = LocalCluster(processes=False, threads_per_worker=None)
 client = Client(cluster)
 
+
 def func(args):
     return do_somthing_with_args
+
 
 per_proc = 5
 args_list = [args1, args2, ...]
 
 with joblib.parallel_backend("dask"):
     results = joblib.Parallel(verbose=1)(
-        joblib.delayed(func)(args)
-        for args in tlz.partition_all(per_proc, args_list)
+        joblib.delayed(func)(args) for args in tlz.partition_all(per_proc, args_list)
     )
 ```
 
@@ -31,10 +32,10 @@ use `*` to expand the list like so:
 def func(arg1, arg2, arg3, arg4, arg5):
     return do_somthing_with_args
 
+
 with joblib.parallel_backend("dask"):
     results = joblib.Parallel(verbose=1)(
-        joblib.delayed(func)(*args)
-        for args in tlz.partition_all(per_proc, args_list)
+        joblib.delayed(func)(*args) for args in tlz.partition_all(per_proc, args_list)
     )
 ```
 
@@ -43,8 +44,7 @@ Also, we could have directly used `Client()` with `joblib` like so:
 ```python
 with Client(), joblib.parallel_backend("dask"):
     results = joblib.Parallel(verbose=1)(
-        joblib.delayed(func)(args)
-        for args in tlz.partition_all(per_proc, args_list)
+        joblib.delayed(func)(args) for args in tlz.partition_all(per_proc, args_list)
     )
 ```
 

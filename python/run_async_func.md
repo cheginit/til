@@ -12,6 +12,7 @@ from typing import Callable, Any, TypeVar
 
 T = TypeVar("T")
 
+
 async def run_in_threadpool(func: Callable[..., T], *args: Any, **kwargs: Any) -> T:
     """Mock Sync function for Async call.Any
     Code from https://github.com/encode/starlette/blob/master/starlette/concurrency.py

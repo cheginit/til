@@ -12,6 +12,7 @@ in [Python's documentation](https://docs.python.org/3/library/collections.html#c
 ```python
 from collections import deque
 
+
 def roundrobin(*iterables):
     "roundrobin('ABC', 'D', 'EF') --> A D E B F C"
     iterators = deque(map(iter, iterables))

@@ -1,5 +1,0 @@
-# Define glob expressions to ignore
-ignores:
-  - "**/README.md"
-
-code_block_line_length: 100

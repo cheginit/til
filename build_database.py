@@ -1,4 +1,5 @@
 """Taken from https://github.com/simonw/til ."""
+
 import os
 import pathlib
 import time
@@ -13,7 +14,7 @@ from sqlite_utils.db import NotFoundError
 root = pathlib.Path(__file__).parent.resolve()
 
 
-def created_changed_times(repo_path: str, ref: str = "main") -> Dict[str, str]:
+def created_changed_times(repo_path: str, ref: str = "main") -> dict[str, str]:
     """Determine creation time in UTC time zone."""
     created_changed_times = {}
     repo = git.Repo(repo_path, odbt=git.GitDB)

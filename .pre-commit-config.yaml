@@ -34,26 +34,11 @@ repos:
     hooks:
     - id: black
       name: Autoformat with black
-      args: [-t, py38, -l, "100"]
+      args: [-t, py311, -l, "100"]
 
   - repo: https://github.com/asottile/pyupgrade
     rev: v3.15.0
     hooks:
     - id: pyupgrade
-      name: Upgrade synax to python 3.7+ with pyupgrade
-      args: [--py37-plus]
-
-  - repo: https://github.com/PyCQA/flake8
-    rev: 7.0.0
-    hooks:
-    - id: flake8
-      name: Linting with flake8
-      args: [--max-line-length, "100"]
-      additional_dependencies:
-      - flake8-comprehensions
-      - flake8-builtins
-      - flake8-blind-except
-      - flake8-bugbear
-      - flake8-use-fstring
-      - flake8-docstrings
-      - flake8-simplify
+      name: Upgrade synax to python 3.11+ with pyupgrade
+      args: [--py311-plus]

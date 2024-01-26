@@ -12,15 +12,19 @@ import time
 
 nl = [[1, "2", "3"], [4, 5]] * 20_000_000
 
+
 @timecall(immediate=True, timer=time.perf_counter)
 def conc_tlz(nested_list):
     return list(tlz.concat(nested_list))
 
+
 _ = conc_tlz(nl)
+
 
 @timecall(immediate=True, timer=time.perf_counter)
 def conc_lc(nested_list):
     return [x for y in nested_list for x in y]
+
 
 _ = conc_lc(nl)
 ```

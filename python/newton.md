@@ -16,6 +16,7 @@ from numba import njit
 
 ngjit = functools.partial(njit, cache=True, nogil=True)
 
+
 @ngjit("b1(f8, f8, f8, f8)")
 def within_tol(x: float, y: float, atol: float, rtol: float) -> bool:
     """Check if two float numbers are within a tolerance."""
@@ -26,7 +27,7 @@ def within_tol(x: float, y: float, atol: float, rtol: float) -> bool:
 def func_main(theta: float, args: Tuple[float, float]) -> float:
     """The main function to find the root of."""
     area, rad = args
-    return theta - np.sin(theta) - 2 * area / rad ** 2
+    return theta - np.sin(theta) - 2 * area / rad**2
 
 
 @ngjit("f8(f8)")
@@ -82,9 +83,11 @@ Now, let's use `optimize.newton`:
 ```python
 from scipy import optimize
 
+
 def der1(theta: float, _) -> float:
     """The first derivative of the main function."""
     return 1.0 - np.cos(theta)
+
 
 def der2(theta: float, _) -> float:
     """The second derivative of the main function."""

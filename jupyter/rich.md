@@ -9,7 +9,8 @@ for all notebooks:
 ```python
 try:
     import rich
-    c.InteractiveShellApp.extensions.append('rich')
+
+    c.InteractiveShellApp.extensions.append("rich")
 except ImportError:
     pass
 ```

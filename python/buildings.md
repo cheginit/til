@@ -11,10 +11,11 @@ following function.
 import duckdb
 from pathlib import Path
 
+
 def overture_buildings(
     bbox: tuple[float, float, float, float],
     dst_parquet: str | Path,
-    )-> None:
+) -> None:
     """Query a subset of Overture's buildings data and save it as a GeoParquet file.
 
     Parameters
@@ -53,6 +54,7 @@ def overture_buildings(
     conn.execute(f"COPY ({query}) TO '{file}' WITH (FORMAT PARQUET);")
 
     conn.close()
+
 
 # New York City bbox
 bbox_example = (-74.25909, 40.477399, -73.700181, 40.916178)

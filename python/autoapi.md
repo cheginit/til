@@ -26,7 +26,7 @@ autoapi_ignore = [
     "**tests**",
     "**setup**",
     "**generate_pip**",
-    "**conf**"
+    "**conf**",
 ]
 
 autoapi_options = [

@@ -3,10 +3,10 @@
 [`miniforge`](https://github.com/conda-forge/miniforge) is a minimal installer for Conda specific
 to conda-forge. It is comparable to Miniconda, but with:
 
-* `conda-forge` set as the default channel
-* An emphasis on supporting various CPU architectures
-* Optional support for PyPy in place of standard Python (aka "CPython")
-* Optional support for Mamba in place of Conda
+- `conda-forge` set as the default channel
+- An emphasis on supporting various CPU architectures
+- Optional support for PyPy in place of standard Python (aka "CPython")
+- Optional support for Mamba in place of Conda
 
 First, install `miniforge`:
 
