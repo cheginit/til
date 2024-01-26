@@ -5,7 +5,6 @@
 My Today I Learned snippets. Inspired by [simonw/til](https://github.com/simonw/til).
 
 <!-- index starts -->
-
 ## Python
 
 - [Install and setup `miniforge`](https://cheginit.github.io/til/python/miniforge.html) - 2021-02-20
@@ -29,6 +28,7 @@ My Today I Learned snippets. Inspired by [simonw/til](https://github.com/simonw/
 - [Networkx graph from NHDPlus](https://cheginit.github.io/til/python/nhdplus.html) - 2021-11-18
 - [Parallel with Dask and Joblib](https://cheginit.github.io/til/python/parallel.html) - 2021-11-23
 - [Implementing Newton-Raphson algorithm with Numba](https://cheginit.github.io/til/python/newton.html) - 2022-08-01
+- [Overture Buildings using DuckDB](https://cheginit.github.io/til/python/buildings.html) - 2024-01-20
 
 ## Jupyter
 
@@ -43,5 +43,4 @@ My Today I Learned snippets. Inspired by [simonw/til](https://github.com/simonw/
 ## Github Actions
 
 - [Speed up Github Actions with `mamba`](https://cheginit.github.io/til/github_actions/mamba.html) - 2021-02-26
-
 <!-- index ends -->
