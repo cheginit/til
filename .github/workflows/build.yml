@@ -42,7 +42,7 @@ jobs:
         cd main
         python update_readme.py --rewrite
         cat README.md
-    
+
     - name: Lint with pre-commit
       uses: pre-commit/action@v3.0.0
 
