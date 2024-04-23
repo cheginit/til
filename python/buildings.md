@@ -95,3 +95,19 @@ def overture_buildings(
 bbox_example = (-74.02169, 40.696423, -73.891338, 40.831263)
 overture_buildings(bbox_example, "building", "nyc_buildings_subset.parquet")
 ```
+
+You can read the GeoParquet file with GeoPandas using the following code snippet:
+
+```python
+import geopandas as gpd
+import pandas as pd
+import shapely.wkb
+
+
+manhatten = pd.read_parquet("nyc_buildings_subset.parquet")
+manhatten = gpd.GeoDataFrame(
+    manhatten.drop(columns="geometry"),
+    geometry=shapely.wkb.loads(manhatten["geometry"]),
+    crs=4326,
+)
+```
