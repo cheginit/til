@@ -74,12 +74,11 @@ def overture_buildings(
     conn.execute(f"SET s3_region='{s3_region}';")
 
     read_parquet = f"read_parquet('{remote_path}', filename=true, hive_partitioning=1);"
-    conn.execute(f"CREATE VIEW data_view AS SELECT * FROM {read_parquet}")
+    conn.execute(f"CREATE OR REPLACE VIEW data_view AS SELECT * FROM {read_parquet}")
 
     query = f"""
     SELECT
         data.*,
-        ST_GeomFromWKB(data.geometry) as geometry,
     FROM data_view AS data
     WHERE data.bbox.xmin <= {bbox[2]} AND data.bbox.xmax >= {bbox[0]}
     AND data.bbox.ymin <= {bbox[3]} AND data.bbox.ymax >= {bbox[1]}
