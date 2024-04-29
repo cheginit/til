@@ -30,7 +30,7 @@ repos:
       name: Sort imports with isort
 
   - repo: https://github.com/psf/black
-    rev: 24.4.1
+    rev: 24.4.2
     hooks:
     - id: black
       name: Autoformat with black
