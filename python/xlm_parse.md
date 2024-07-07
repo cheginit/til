@@ -11,7 +11,7 @@ import async_retriever as ar
 import defusedxml.ElementTree as ET
 import pandas as pd
 
-# A list of urls and payloads of the tagret XMLs
+# A list of urls and payloads of the target XMLs
 urls, kwds = zip(
     *[
         (
