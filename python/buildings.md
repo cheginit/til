@@ -114,6 +114,16 @@ manhatten = gpd.GeoDataFrame(
 Alternatively, you can use `pyarrow`:
 
 ```python
+from pathlib import Path
+
+import pyarrow as pa
+import pyarrow.compute as pc
+import pyarrow.dataset as ds
+import pyarrow.parquet as pq
+import shapely
+from pyarrow import fs
+
+
 def _record_batch_reader(
     bbox: tuple[float, float, float, float]
 ) -> pa.RecordBatchReader:
