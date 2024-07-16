@@ -110,3 +110,70 @@ manhatten = gpd.GeoDataFrame(
     crs=4326,
 )
 ```
+
+Alternatively, you can use `pyarrow`:
+
+```python
+def _record_batch_reader(
+    bbox: tuple[float, float, float, float]
+) -> pa.RecordBatchReader:
+    """Get a pyarrow RecordBatchReader for the desired bounding box and s3 path."""
+    path = "overturemaps-us-west-2/release/2024-06-13-beta.1/theme=buildings/type=building/"
+    xmin, ymin, xmax, ymax = bbox
+    filter = (
+        (pc.field("bbox", "xmin") < xmax)
+        & (pc.field("bbox", "xmax") > xmin)
+        & (pc.field("bbox", "ymin") < ymax)
+        & (pc.field("bbox", "ymax") > ymin)
+    )
+
+    dataset = ds.dataset(
+        path, filesystem=fs.S3FileSystem(anonymous=True, region="us-west-2")
+    )
+    batches = dataset.to_batches(filter=filter)
+    non_empty_batches = (b for b in batches if b.num_rows > 0)
+
+    geoarrow_schema = dataset.schema.set(
+        dataset.schema.get_field_index("geometry"),
+        dataset.schema.field("geometry").with_metadata(
+            {b"ARROW:extension:name": b"geoarrow.wkb"}
+        ),
+    )
+    return pa.RecordBatchReader.from_batches(geoarrow_schema, non_empty_batches)
+
+
+def get_buildings(
+    bbox: tuple[float, float, float, float], path_parquet: str | Path
+) -> gpd.GeoDataFrame:
+    """Retrieve building data from Overture Maps for a given bounding box.
+
+    Notes
+    -----
+    This function is based on
+    `overturemaps-py <https://github.com/OvertureMaps/overturemaps-py>`__.
+
+    Parameters
+    ----------
+    bbox : tuple
+        Bounding box coordinates (xmin, ymin, xmax, ymax)
+    path_parquet : str or Path
+        Path to save the output file
+
+    Returns
+    -------
+    geopandas.GeoDataFrame
+        GeoDataFrame containing the building data
+    """
+    path_parquet = Path(path_parquet)
+    if path_parquet.suffix != ".parquet":
+        msg = "The output file must be a GeoParquet file with the extension `.parquet`"
+        raise ValueError(msg)
+
+    reader = _record_batch_reader(bbox)
+    with pq.ParquetWriter(path_parquet, reader.schema) as writer:
+        for batch in reader:
+            if batch.num_rows > 0:
+                writer.write_batch(batch)
+
+    return gpd.read_parquet(path_parquet)
+```
