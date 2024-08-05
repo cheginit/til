@@ -5,7 +5,6 @@
 My Today I Learned snippets. Inspired by [simonw/til](https://github.com/simonw/til).
 
 <!-- index starts -->
-
 ## Python
 
 - [Install and setup `miniforge`](https://cheginit.github.io/til/python/miniforge.html) - 2021-02-20
@@ -46,5 +45,4 @@ My Today I Learned snippets. Inspired by [simonw/til](https://github.com/simonw/
 ## Github Actions
 
 - [Speed up Github Actions with `mamba`](https://cheginit.github.io/til/github_actions/mamba.html) - 2021-02-26
-
 <!-- index ends -->
