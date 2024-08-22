@@ -60,7 +60,7 @@ def overture_buildings(
     """
     s3_region = "us-west-2"
     base_url = f"s3://overturemaps-{s3_region}/release"
-    version = "2024-04-16-beta.0"
+    version = "2024-07-22.0"
     if overture_type not in THEME_MAP:
         raise ValueError(f"Valid Overture types are: {list(THEME_MAP)}")
     theme = THEME_MAP[overture_type]
@@ -128,9 +128,11 @@ def _record_batch_reader(
     bbox: tuple[float, float, float, float]
 ) -> pa.RecordBatchReader:
     """Get a pyarrow RecordBatchReader for the desired bounding box and s3 path."""
-    path = "overturemaps-us-west-2/release/2024-06-13-beta.1/theme=buildings/type=building/"
+    s3_region = "us-west-2"
+    version = "2024-07-22.0"
+    path = f"overturemaps-{s3_region}/release/{version}/theme=buildings/type=building/"
     xmin, ymin, xmax, ymax = bbox
-    filter = (
+    ds_filter = (
         (pc.field("bbox", "xmin") < xmax)
         & (pc.field("bbox", "xmax") > xmin)
         & (pc.field("bbox", "ymin") < ymax)
@@ -140,7 +142,7 @@ def _record_batch_reader(
     dataset = ds.dataset(
         path, filesystem=fs.S3FileSystem(anonymous=True, region="us-west-2")
     )
-    batches = dataset.to_batches(filter=filter)
+    batches = dataset.to_batches(filter=ds_filter)
     non_empty_batches = (b for b in batches if b.num_rows > 0)
 
     geoarrow_schema = dataset.schema.set(
