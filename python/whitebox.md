@@ -17,7 +17,12 @@ import re
 import subprocess
 
 
-def _download_wbt(wbt_root: str | Path = "WBT", zip_path: str | Path | None = None, refresh_download: bool = False, verbose: bool = False) -> None:
+def _download_wbt(
+    wbt_root: str | Path = "WBT",
+    zip_path: str | Path | None = None,
+    refresh_download: bool = False,
+    verbose: bool = False,
+) -> None:
     """Download the WhiteboxTools executable for the current platform."""
     base_url = "https://www.whiteboxgeo.com/WBT_{}/WhiteboxTools_{}.zip"
 
@@ -41,13 +46,17 @@ def _download_wbt(wbt_root: str | Path = "WBT", zip_path: str | Path | None = No
     url = base_url.format(system, platform_suffix)
     wbt_root = Path(wbt_root)
 
-    exe_name = "whitebox_tools.exe" if platform.system() == "Windows" else "whitebox_tools"
+    exe_name = (
+        "whitebox_tools.exe" if platform.system() == "Windows" else "whitebox_tools"
+    )
     if (wbt_root / exe_name).exists():
         shutil.rmtree(wbt_root)
 
     with tempfile.TemporaryDirectory() as temp_dir:
         temp_path = Path(temp_dir)
-        zip_path = temp_path / "whitebox_tools.zip" if zip_path is None else Path(zip_path)
+        zip_path = (
+            temp_path / "whitebox_tools.zip" if zip_path is None else Path(zip_path)
+        )
         zip_path.parent.mkdir(parents=True, exist_ok=True)
         if zip_path.suffix != ".zip":
             zip_path = zip_path.with_suffix(".zip")
@@ -86,18 +95,23 @@ def _download_wbt(wbt_root: str | Path = "WBT", zip_path: str | Path | None = No
             exec_path = wbt_root / exec_name
             if exec_path.exists():
                 exec_path.chmod(
-                    exec_path.stat().st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH
+                    exec_path.stat().st_mode
+                    | stat.S_IXUSR
+                    | stat.S_IXGRP
+                    | stat.S_IXOTH
                 )
 
 
 def _get_wbt_version(exe_path: str | Path) -> str:
     """Get the version of WhiteboxTools."""
     try:
-        result = subprocess.run([str(exe_path), "--version"], capture_output=True, text=True)
+        result = subprocess.run(
+            [str(exe_path), "--version"], capture_output=True, text=True
+        )
         output = result.stdout.strip()
     except subprocess.CalledProcessError as e:
         raise RuntimeError(f"Error running WhiteboxTools: {e!s}") from e
-    match = re.search(r'WhiteboxTools v(\d+\.\d+\.\d+)', output)
+    match = re.search(r"WhiteboxTools v(\d+\.\d+\.\d+)", output)
     return match.group(1) if match else "unknown"
 
 
@@ -150,7 +164,9 @@ def whitebox_tools(
     wbt_root = Path(wbt_root)
     work_dir = Path(work_dir) if work_dir else Path.cwd()
 
-    exe_name = "whitebox_tools.exe" if platform.system() == "Windows" else "whitebox_tools"
+    exe_name = (
+        "whitebox_tools.exe" if platform.system() == "Windows" else "whitebox_tools"
+    )
     exe_path = wbt_root / exe_name
 
     if not exe_path.exists() or refresh_download:
