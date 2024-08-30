@@ -86,8 +86,8 @@ def _download_wbt(
                             dest = wbt_root / extracted_path
                             dest.parent.mkdir(parents=True, exist_ok=True)
                             shutil.move(source, dest)
-        except zipfile.BadZipFile as e:
-            raise RuntimeError("Downloaded file is not a valid zip file.") from e
+        except zipfile.BadZipFile:
+            raise RuntimeError("Downloaded file is not a valid zip file.")
 
     # Set executable permissions for non-Windows platforms
     if system != "Windows":
@@ -115,9 +115,42 @@ def _get_wbt_version(exe_path: str | Path) -> str:
     return match.group(1) if match else "unknown"
 
 
-def whitebox_tools(
+def _run_wbt(
+    exe_path: str | Path,
     tool_name: str,
-    args: list[str] | tuple[str, ...],
+    args: list[str],
+    compress_rasters: bool,
+    work_dir: str | Path,
+    verbose: bool,
+) -> None:
+    """Run a WhiteboxTools command."""
+    command = [
+        str(exe_path),
+        f"--run={tool_name}",
+        f"--wd={work_dir}",
+        "-v" if verbose else "-v=false",
+        f"--compress_rasters={'true' if compress_rasters else 'false'}",
+    ]
+    command.extend(args)
+
+    if verbose:
+        version = _get_wbt_version(exe_path)
+        print(f"WhiteboxTools version: {version}")
+        print(" ".join(map(str, command)))
+
+    try:
+        process = subprocess.run(command, check=True, text=True, capture_output=True)
+        if verbose:
+            print(process.stdout)
+    except subprocess.CalledProcessError as e:
+        print(f"Error output: {e.stdout}")
+        raise Exception(f"Error running tool: {e}")
+    except Exception as e:
+        raise Exception(f"Unexpected error: {e}")
+
+
+def whitebox_tools(
+    arg_dict: dict[str, list[str]],
     wbt_root: str | Path = "WBT",
     work_dir: str | Path = "",
     verbose: bool = False,
@@ -125,14 +158,21 @@ def whitebox_tools(
     zip_path: str | Path | None = None,
     refresh_download: bool = False,
 ) -> None:
-    """Run a WhiteboxTools (not WhiteboxRunner) tool with specified arguments.
+    """Run a WhiteboxTools (not Whitebox Runner) tool with specified arguments.
 
     Parameters
     ----------
-    tool_name : str
-        Name of the WhiteboxTools to run.
-    args : list or tuple
-        List of arguments for the tool.
+    arg_dict : dict
+        A dictionary containing the tool names as keys and list of each
+        tool's arguments as values. For example:
+
+        .. code-block:: python
+
+            {
+                "BreachDepressionsLeastCost": ["--dem='dem.tif'", "--output='breached_dem.tif'"],
+                "D8Pointer": ["-i=dem_corr.tif", "-o=fdir.tif"],
+            }
+
     wbt_root : str or Path, optional
         Path to the root directory containing the Whitebox executables (default is "WBT").
     work_dir : str or Path, optional
@@ -172,33 +212,26 @@ def whitebox_tools(
     if not exe_path.exists() or refresh_download:
         _download_wbt(wbt_root, zip_path, refresh_download, verbose)
 
-    command = [
-        str(exe_path),
-        f"--run={tool_name}",
-        f"--wd={work_dir}",
-        "-v" if verbose else "-v=false",
-        f"--compress_rasters={'true' if compress_rasters else 'false'}",
-    ]
-    command.extend(args)
+    if not isinstance(arg_dict, dict):
+        raise ValueError("arg_dict must be a dict.")
 
-    if verbose:
-        version = _get_wbt_version(exe_path)
-        print(f"WhiteboxTools version: {version}")
-        print(" ".join(map(str, command)))
+    if not all(
+        isinstance(k, str) and isinstance(v, list | tuple) for k, v in arg_dict.items()
+    ):
+        raise ValueError(
+            "arg_dict must be a dict of str keys and list or tuple values."
+        )
 
-    try:
-        process = subprocess.run(command, check=True, text=True, capture_output=True)
-        if verbose:
-            print(process.stdout)
-    except subprocess.CalledProcessError as e:
-        print(f"Error output: {e.stdout}")
-        raise RuntimeError(f"Error running tool: {e}") from e
-    except Exception as e:
-        raise Exception(f"Unexpected error: {e}")
+    for tool_name, args in arg_dict.items():
+        _run_wbt(exe_path, tool_name, args, compress_rasters, work_dir, verbose)
 ```
 
-Some example usage:
+An example usage:
 
 ```python
-whitebox_tools("BreachDepressionsLeastCost", ["-i=dem.tif", "-o=dem_corr.tif"])
+wbt_args = {
+    "BreachDepressionsLeastCost": ["-i=dem.tif", "-o=dem_corr.tif"],
+    "D8Pointer": ["-i=dem_corr.tif", "-o=fdir.tif"],
+}
+whitebox_tools(wbt_args, wbt_root="WBT", zip_path="WBT.zip")
 ```
