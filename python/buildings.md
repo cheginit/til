@@ -1,4 +1,4 @@
-# Overture Buildings using DuckDB
+# Overture Buildings using PyArrow
 
 [Overture Maps](https://overturemaps.org)
 has a building footprints dataset that contains
