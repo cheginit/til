@@ -58,13 +58,17 @@ def get_buildings(
         & (pc.field("bbox", "ymax") > ymin)
     )
 
-    dataset = ds.dataset(src, filesystem=fs.S3FileSystem(anonymous=True, region=s3_region))
+    dataset = ds.dataset(
+        src, filesystem=fs.S3FileSystem(anonymous=True, region=s3_region)
+    )
     batches = dataset.to_batches(filter=filter)
     non_empty_batches = (b for b in batches if b.num_rows > 0)
 
     geoarrow_schema = dataset.schema.set(
         dataset.schema.get_field_index("geometry"),
-        dataset.schema.field("geometry").with_metadata({b"ARROW:extension:name": b"geoarrow.wkb"}),
+        dataset.schema.field("geometry").with_metadata(
+            {b"ARROW:extension:name": b"geoarrow.wkb"}
+        ),
     )
     reader = pa.RecordBatchReader.from_batches(geoarrow_schema, non_empty_batches)
 
@@ -76,4 +80,4 @@ def get_buildings(
     return gpd.read_parquet(path_parquet)
 ```
 
-Note that you can set the `version` to the latest by checking Overture's [release notes](https://docs.overturemaps.org/release/latest/). 
+Note that you can set the `version` to the latest by checking Overture's [release notes](https://docs.overturemaps.org/release/latest/).
