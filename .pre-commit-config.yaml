@@ -10,7 +10,7 @@ repos:
       args: ['--fix=lf']
 
   - repo: https://github.com/executablebooks/mdformat
-    rev: 0.7.19
+    rev: 0.7.21
     hooks:
       - id: mdformat
         additional_dependencies:
@@ -37,7 +37,7 @@ repos:
       args: [-t, py311, -l, "100"]
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.19.0
+    rev: v3.19.1
     hooks:
     - id: pyupgrade
       name: Upgrade synax to python 3.11+ with pyupgrade
