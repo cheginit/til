@@ -1,6 +1,6 @@
 # Today I Learned
 
-[![Counter badge](https://img.shields.io/badge/count-30-green.svg)](https://shields.io/)
+[![Counter badge](https://img.shields.io/badge/count-31-green.svg)](https://shields.io/)
 
 My Today I Learned snippets. Inspired by [simonw/til](https://github.com/simonw/til).
 
@@ -38,6 +38,7 @@ My Today I Learned snippets. Inspired by [simonw/til](https://github.com/simonw/
 - [Connect to a remote JupyterLab server](https://cheginit.github.io/til/jupyter/remote.html) - 2021-02-20
 - [Run Jupyter Lab as an Application](https://cheginit.github.io/til/jupyter/app.html) - 2021-04-02
 - [Rich extension](https://cheginit.github.io/til/jupyter/rich.html) - 2024-01-17
+- [Check for Jupyter Kernel](https://cheginit.github.io/til/jupyter/is_instance.html) - 2025-01-17
 
 ## Web Service
 
