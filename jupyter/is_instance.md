@@ -16,4 +16,3 @@ def is_jupyter_kernel():
         return False
     return "Terminal" not in ipython.__class__.__name__
 ```
-
