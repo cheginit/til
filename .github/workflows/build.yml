@@ -10,13 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check out repo
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         fetch-depth: 0
         path: main
 
     - name: Checkout til-db
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         repository: cheginit/til-db
         path: til-db
