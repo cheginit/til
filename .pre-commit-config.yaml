@@ -30,14 +30,14 @@ repos:
       name: Sort imports with isort
 
   - repo: https://github.com/psf/black-pre-commit-mirror
-    rev: 25.9.0
+    rev: 25.11.0
     hooks:
     - id: black
       name: Autoformat with black
       args: [-t, py311, -l, "100"]
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.21.0
+    rev: v3.21.1
     hooks:
     - id: pyupgrade
       name: Upgrade synax to python 3.11+ with pyupgrade
