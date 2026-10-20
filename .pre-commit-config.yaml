@@ -24,7 +24,7 @@ repos:
       name: Checks for common misspellings in text files.
 
   - repo: https://github.com/PyCQA/isort
-    rev: 9.0.2
+    rev: 10.0.0b1
     hooks:
     - id: isort
       name: Sort imports with isort
